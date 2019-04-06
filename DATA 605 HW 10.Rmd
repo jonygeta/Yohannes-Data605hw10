@@ -1,0 +1,45 @@
+---
+title: "Data 605 HW 10"
+author: "Yohannes Deboch"
+date: "04/04/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Smith is in jail and has 1 dollar; he can get out on bail if he has 8 dollars.
+A guard agrees to make a series of bets with him. If Smith bets A dollars, he wins A dollars with probability .4 and loses A dollars with probability .6.
+
+Find the probability that he wins 8 dollars before losing all of his money if
+
+(a) he bets 1 dollar each time (timid strategy).
+
+Answer:
+
+$P = \frac{1 - \frac{q}{p}^j}{1 - \frac{q}{p}^N}$
+
+```{r}
+p <- 0.4
+q <- 1-p
+j <- 1
+N <- 8
+P <- (1 - (q/p)^j) / ( 1 - (q/p)^N)
+P
+```
+
+(b) he bets, each time, as much as possible but not more than necessary to bring his fortune up to 8 dollars (bold strategy).
+
+Answer: Smith must win up to 8 dollar. He needs to win successive 3 times.
+
+```{r}
+P_bold <- p^3
+P_bold
+```
+
+
+
+(c) Which strategy gives Smith the better chance of getting out of jail?
+
+Answer: The bold strategy has a probability of 0.064 higher than timid strategy probability 0.02030135. Bold strategy gives Smith the better chance of getting out of jail.
